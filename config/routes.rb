@@ -3,7 +3,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :bookmarks, only: [:create]
+  # config/routes.rb
+
+resources :lists do
+  resources :bookmarks, only: [:new, :create]
+end
+
+
   resources :bookmarks do
   get 'new/:movie_id/:list_id', to: 'bookmarks#new', on: :collection
 end
